@@ -2,6 +2,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PostPage from "./pages/PostPage";
 import PostDetail from "./pages/PostDetail";
+import Profile from './pages/Profile'
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu } from 'antd';
@@ -36,6 +37,9 @@ const App = () => {
           </Route>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
           <Route path="/">
             <HomePage />

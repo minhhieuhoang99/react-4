@@ -1,10 +1,14 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button, Checkbox } from 'antd';
+import {useHistory} from 'react-router-dom';
+import Profile from '../../pages/Profile'
 const Login = () => {
+  let history = useHistory();
   
   const onFinish = values => {
     console.log('Success:', values);
+    history.push('/profile') 
   };
 
   const onFinishFailed = errorInfo => {
@@ -70,8 +74,8 @@ const Login = () => {
           span: 16
         }}
       >
-        <Button type="primary" htmlType="submit" >
-          Submit
+        <Button type="primary" htmlType="submit">
+          Login
         </Button>
       </Form.Item>
     </Form>
