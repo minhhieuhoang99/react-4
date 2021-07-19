@@ -2,6 +2,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PostPage from "./pages/PostPage";
 import PostDetail from "./pages/PostDetail";
+import RegisterPage from "./pages/RegisterPage";
 import Profile from './pages/Profile'
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -21,7 +22,8 @@ const App = () => {
         <Menu.Item key="/home"><Link to="/home">Home</Link></Menu.Item>
         <Menu.Item key="/post"><Link to="/post">Post</Link></Menu.Item>
         <Menu.Item key="/login"><Link to="/login">Login</Link></Menu.Item>
-      </Menu>  
+        <Menu.Item key="/register"><Link to="/register">Register</Link></Menu.Item>
+      </Menu>
     </Header>
     </Layout>
       
@@ -40,6 +42,9 @@ const App = () => {
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
           </Route>
           <Route path="/">
             <HomePage />

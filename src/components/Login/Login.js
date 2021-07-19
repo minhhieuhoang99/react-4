@@ -1,17 +1,17 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+// import { useForm } from "react-hook-form";
 import { Form, Input, Button, Checkbox } from 'antd';
-import {useHistory} from 'react-router-dom';
-import Profile from '../../pages/Profile'
-const Login = () => {
-  let history = useHistory();
+// import {useHistory} from 'react-router-dom';
+// import Profile from '../../pages/Profile'
+const Login = (props) => {
+  // let history = useHistory();
   
-  const onFinish = values => {
+  const onFinish = (values) => {
     console.log('Success:', values);
-    history.push('/profile') 
   };
 
-  const onFinishFailed = errorInfo => {
+  const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
   
@@ -19,26 +19,29 @@ const Login = () => {
     <Form
       name="basic"
       labelCol={{
-        span: 8
+        span: 8,
       }}
       wrapperCol={{
-        span: 16
+        span: 8,
       }}
       initialValues={{
-        remember: true
+        remember: true,
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
-        name="username"
+        name="email"
+        label="E-mail"
         rules={[
           {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
             required: true,
-            message: 'Please input your username!'
-          }
-          
+            message: 'Please input your E-mail!',
+          },
         ]}
       >
         <Input />
@@ -50,8 +53,8 @@ const Login = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password!'
-          }
+            message: 'Please input your password!',
+          },
         ]}
       >
         <Input.Password />
@@ -62,7 +65,7 @@ const Login = () => {
         valuePropName="checked"
         wrapperCol={{
           offset: 8,
-          span: 16
+          span: 16,
         }}
       >
         <Checkbox>Remember me</Checkbox>
@@ -71,11 +74,11 @@ const Login = () => {
       <Form.Item
         wrapperCol={{
           offset: 8,
-          span: 16
+          span: 16,
         }}
       >
         <Button type="primary" htmlType="submit">
-          Login
+          Submit
         </Button>
       </Form.Item>
     </Form>
