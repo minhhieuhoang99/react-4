@@ -6,24 +6,22 @@ import { Form, Input, Button, Checkbox } from 'antd';
 // import {useHistory} from 'react-router-dom';
 // import Profile from '../../pages/Profile'
 import { useEffect, useState , useRef } from "react";
-const LoginPage = (currentUser , setCurrentUser) => {
+const LoginPage = ({currentUser , setCurrentUser}) => {
   // let history = useHistory();
-  
-  
   const onFinish = (values) => {
     console.log('Success:', values);
-    // axios.get('https://60dff0ba6b689e001788c858.mockapi.io/token' , {
-    //   email : values.email,
-    //   password : values.password
-    // }) 
-    // .then (response => {
-      
-    //   setCurrentUser ({
-    //     token: response.data.token,
-    //     userId: response.data.userId
-    //   })
-    // }) 
-  };
+    axios.get('https://60dff0ba6b689e001788c858.mockapi.io/token' , {
+      email : values.email,
+      password : values.password
+    }) 
+    .then (response => {
+      setCurrentUser ({
+        token: response.data.token,
+        userId: response.data.userId
+      })
+      axios.defaults.headers.common['Authorization'] = response.data.token;
+    }) 
+  }
   console.log('Current user',currentUser)
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);

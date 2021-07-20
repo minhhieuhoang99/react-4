@@ -55,6 +55,7 @@ const App = () => {
             currentUser = {currentUser}
             setCurrentUser = {setCurrentUser}
             />
+            
           </Route>
           <Route path="/register">
             <RegisterPage />
