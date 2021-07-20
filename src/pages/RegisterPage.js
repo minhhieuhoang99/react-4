@@ -223,7 +223,7 @@ const Register = (props) => {
       >
         <Checkbox>
           {/* I have read the <a href="">agreement</a> */}
-          I have read the <a href="">agreement</a>
+          I have read the <a href="http://mango.viecrew.com/">agreement</a>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>

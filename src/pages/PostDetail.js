@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from 'antd';
-
+import React from 'react';
 const PostDetail = (props) => {
   const [post, setPost] = useState();
   const { id } = useParams();

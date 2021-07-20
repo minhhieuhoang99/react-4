@@ -5,12 +5,17 @@ import PostDetail from "./pages/PostDetail";
 import RegisterPage from "./pages/RegisterPage";
 import Profile from './pages/Profile'
 import "./App.css";
+import { useEffect, useState , useRef } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu } from 'antd';
+import React from 'react';
 const { Header} = Layout;
 
 const App = () => {
-  
+  const [currentUser , setCurrentUser] = useState({
+    token : null,
+    userId : null
+  }); 
    
   return (
     <Router>
@@ -22,6 +27,7 @@ const App = () => {
         <Menu.Item key="/home"><Link to="/home">Home</Link></Menu.Item>
         <Menu.Item key="/post"><Link to="/post">Post</Link></Menu.Item>
         <Menu.Item key="/login"><Link to="/login">Login</Link></Menu.Item>
+        <Menu.Item key="/profile"><Link to="/profile">Profile</Link></Menu.Item>
         <Menu.Item key="/register"><Link to="/register">Register</Link></Menu.Item>
       </Menu>
     </Header>
@@ -38,10 +44,17 @@ const App = () => {
             <PostDetail />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            <LoginPage 
+            currentUser = {currentUser}
+            setCurrentUser = {setCurrentUser}
+            />
+            
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile 
+            currentUser = {currentUser}
+            setCurrentUser = {setCurrentUser}
+            />
           </Route>
           <Route path="/register">
             <RegisterPage />
