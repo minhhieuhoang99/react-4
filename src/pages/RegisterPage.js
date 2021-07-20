@@ -69,6 +69,8 @@ const Register = (props) => {
     value: website,
   }));
   return (
+    <div  style={{ paddingTop: 80 }}>
+    <h1 style ={{ textAlign : "center"}}> Register </h1>
     <Form
       {...formItemLayout}
       form={form}
@@ -230,6 +232,7 @@ const Register = (props) => {
         </Button>
       </Form.Item>
     </Form>
+    </div>
   );
 };
 export default Register;
