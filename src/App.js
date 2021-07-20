@@ -5,7 +5,7 @@ import PostDetail from "./pages/PostDetail";
 import RegisterPage from "./pages/RegisterPage";
 import Profile from './pages/Profile'
 import "./App.css";
-import { useEffect, useState , useRef } from "react";
+import { useState  } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import React from 'react';
@@ -24,11 +24,11 @@ const App = () => {
       <Header className="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="/home"><Link to="/home">Home</Link></Menu.Item>
-        <Menu.Item key="/post"><Link to="/post">Post</Link></Menu.Item>
-        <Menu.Item key="/login"><Link to="/login">Login</Link></Menu.Item>
-        <Menu.Item key="/profile"><Link to="/profile">Profile</Link></Menu.Item>
-        <Menu.Item key="/register"><Link to="/register">Register</Link></Menu.Item>
+        <Menu.Item key="1"><Link to="/home">Home</Link></Menu.Item>
+        <Menu.Item key="2"><Link to="/post">Post</Link></Menu.Item>
+        <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
+        <Menu.Item key="4"><Link to="/profile">Profile</Link></Menu.Item>
+        <Menu.Item key="5"><Link to="/register">Register</Link></Menu.Item>
       </Menu>
     </Header>
     </Layout>

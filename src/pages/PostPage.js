@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState , useRef } from "react";
 import 'antd/dist/antd.css'; 
-import { Table, Input, Button, Space } from 'antd';
+import { Table, Input, Button, Space , Alert , Spin} from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import React from 'react';
@@ -12,13 +12,6 @@ const PokemonPage = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
-  // const [pokemon, setPokemon] = useState({
-  //   id: null,
-  //   name: null,
-  //   height: null,
-  //   weight: null,
-  //   image: null,
-  // });
   const getColumnSearchProps =(dataIndex) => {
     return {
       filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -86,7 +79,7 @@ const PokemonPage = () => {
       title: 'Id',
       dataIndex: 'id',
       width: '20%',
-      key: 'id'
+      key: '1'
     },
     {
       title: 'Title',
@@ -94,13 +87,13 @@ const PokemonPage = () => {
       sorter: (a, b) => a.title.length - b.title.length,
       sortDirections: ['descend', 'ascend'],
       ...getColumnSearchProps('title'),
-      key: 'title',
+      key: '2',
     },
     {
       width: '20%',
       title: 'Action',
       dataIndex: '',
-      key: 'x',
+      key: '3',
       render: (item,record) => <a href={`/PostDetail/${record.id}`}>View Detail</a>,
     },
 
@@ -126,7 +119,13 @@ const PokemonPage = () => {
   }, []);
   
   if (isloading) {
-    return <div>Loading...</div>;
+    return (<Spin tip="Loading...">
+    <Alert
+      message="Alert message title"
+      description="Further details about the context of this alert."
+      type="info"
+    />
+  </Spin>);
   } else {
     return (
       <div>
