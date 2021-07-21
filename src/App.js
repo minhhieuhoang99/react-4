@@ -1,70 +1,65 @@
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PostPage from "./pages/PostPage";
-import PostDetail from "./pages/PostDetail";
+import PostDetailPage from "./pages/PostDetailPage";
 import RegisterPage from "./pages/RegisterPage";
-import Profile from './pages/Profile'
+import ProfilePage from "./pages/ProfilePage";
 import "./App.css";
-import { useState  } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Layout, Menu } from 'antd';
-import React from 'react';
-const { Header} = Layout;
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React from "react";
+import NavBar from "./components/NavBar/NavBar";
+
+const initialCurrentUser = {
+  userId: null,
+  token: null,
+};
 
 const App = () => {
-  const [currentUser , setCurrentUser] = useState({
-    token : null,
-    userId : null
-  }); 
-   
+  const [currentUser, setCurrentUser] = useState(initialCurrentUser);
+  const logout = () => setCurrentUser(initialCurrentUser);
+  const isUserLoggedIn = Boolean(currentUser.userId);
+  console.log(currentUser);
   return (
     <Router>
-      <div className="app">
-      <Layout>
-      <Header className="header">
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1"><Link to="/home">Home</Link></Menu.Item>
-        <Menu.Item key="2"><Link to="/post">Post</Link></Menu.Item>
-        <Menu.Item key="3"><Link to="/login">Login</Link></Menu.Item>
-        <Menu.Item key="4"><Link to="/profile">Profile</Link></Menu.Item>
-        <Menu.Item key="5"><Link to="/register">Register</Link></Menu.Item>
-      </Menu>
-    </Header>
-    </Layout>
-      
-        <Switch>
-          <Route path="/home">
-            <HomePage />
-          </Route>
-          <Route path="/post">
-            <PostPage />
-          </Route>
-          <Route path="/PostDetail/:id">
-            <PostDetail />
-          </Route>
-          <Route path="/login">
-            <LoginPage 
-            currentUser = {currentUser}
-            setCurrentUser = {setCurrentUser}
-            />
-            
-          </Route>
-          <Route path="/profile">
-            <Profile 
-            currentUser = {currentUser}
-            setCurrentUser = {setCurrentUser}
-            />
-            
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </div>
+      <NavBar logout={logout} isUserLoggedIn={isUserLoggedIn} />
+      <Switch>
+        <Route path="/home">
+          <HomePage />
+        </Route>
+        <Route path="/post">
+          <PostPage />
+        </Route>
+        <Route path="/PostDetailPage/:id">
+          <PostDetailPage />
+        </Route>
+        <Route path="/login">
+          <LoginPage
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+        </Route>
+        <Route
+          path="/profile"
+          render={() => {
+            if (!isUserLoggedIn)
+              return (
+                <LoginPage
+                  title="You need to login to continue"
+                  setCurrentUser={setCurrentUser}
+                  currentUser={currentUser}
+                />
+              );
+            else return <ProfilePage currentUser={currentUser} />;
+          }}
+        ></Route>
+        <Route path="/register">
+          <RegisterPage />
+        </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+      </Switch>
     </Router>
   );
 };

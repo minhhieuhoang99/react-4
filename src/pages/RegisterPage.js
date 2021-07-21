@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import {Form,Input,Select,Checkbox,Button,AutoComplete,} from "antd";
+import {Form,Input,Select,Checkbox,Button,AutoComplete,Layout} from "antd";
+const { Footer ,Content } = Layout;
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -69,6 +70,8 @@ const Register = (props) => {
     value: website,
   }));
   return (
+    <Layout style={{ padding: "0 50px", minHeight: "100vh" }}>
+      <Content>
     <div  style={{ paddingTop: 80 }}>
     <h1 style ={{ textAlign : "center"}}> Register </h1>
     <Form
@@ -231,7 +234,10 @@ const Register = (props) => {
         </Button>
       </Form.Item>
     </Form>
+    <Footer style={{ textAlign: 'center' ,position: "sticky", bottom: "0"}}> <a href = "http://mango.viecrew.com/">Mango</a> ©2021 Created by MangoVC</Footer>
     </div>
+    </Content>
+    </Layout>
   );
 };
 export default Register;
