@@ -8,7 +8,7 @@ const HomePage = () => {
         <Layout style={{ padding: '0 50px' , minHeight: "100vh"}}>
           <Content >
           <div style = {{paddingTop :50 }}></div>
-          <h1 style={{ textAlign: 'center'}}> Home </h1>
+          <h1 style={{ textAlign: 'center'}}> HomePage </h1>
             <Home/>
             </Content>
             <Footer style={{ textAlign: 'center' ,position: "sticky", bottom: "0"}}> <a href = "http://mango.viecrew.com/">Mango</a> ©2021 Created by MangoVC</Footer>
